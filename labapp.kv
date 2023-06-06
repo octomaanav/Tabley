@@ -1,0 +1,407 @@
+ScreenManager:
+    HomeScreen:
+    SecondScreen:
+    LayoutScreen:
+    CardScreen:
+    QuestionsScreen:
+    second_question_screen:
+    display_screen:
+    delete_screen:
+    update_screen:
+    csv_screen:
+    second_csv_screen:
+    reminder_screen:
+    second_timetable_layout:
+
+<HomeScreen>:
+    name: 'Home'
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgb: (35/255, 169/255, 127/255)
+            Rectangle:
+                size: self.size
+
+
+        Image:
+            source: 'Images/tabley.png'
+            pos_hint: {'right': 1.21}
+            size_hint: (1.4,0.7)
+
+        Label:
+            text: 'Tabley is an innovative and user-friendly app that simplifies\n the process of creating timetables. It provides an intuitive\n interface where users can easily input their schedule and\n customize it according to their needs. The app also features\n automatic scheduling, which suggests the best times and\n durations for tasks'
+            color: (1,1,1,1)
+            background_color: (1,0,0,1)
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            font_size: self.width/30
+            #text_size: 700, None
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {'top': 0.9}
+
+        Label:
+            size_hint: 0.1, 0.3
+
+        RoundedButton:
+            text: 'Get Started'
+            size_hint: (0.2, 0.2)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            color: (0, 0, 0, 1)
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            font_size: 20
+            on_press:
+                app.root.current = 'SecondScreen'
+                root.manager.transition.direction = 'left'
+
+        Label:
+            size_hint: 0.1, 0.15
+
+<SecondScreen>:
+    name: 'SecondScreen'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas.before:
+            Color:
+                rgb: (198/255, 235/255, 190/255)
+            Rectangle:
+                size: self.size
+
+        BoxLayout:
+
+            Label:
+                size_hint: (0.4, 0.1)
+
+            GridLayout:
+                padding: 30
+                spacing: 30
+                cols: 3
+                rows: 3
+                Button:
+                    background_normal: 'Images/i1.jpg'
+                    on_press:
+                        app.root.current='LayoutScreen'
+                        root.manager.transition.direction='left'
+                Label:
+                    size_hint: (0.6, 0.1)
+
+                Button:
+                    background_normal: 'Images/display.jpg'
+                    on_press: root.display_button_pressed()
+
+                Button:
+                    background_normal: 'Images/update.jpg'
+                    on_press: root.update_button_pressed()
+
+                Label:
+                    size_hint: (0.6, 0.2)
+
+                Button:
+                    background_normal: 'Images/delete.jpg'
+                    on_press: root.delete_button_pressed()
+
+                Button:
+                    background_normal: 'Images/csv.png'
+                    on_press: root.csv_button_pressed()
+                Label:
+                    size_hint: (0.6, 0.2)
+
+                Button:
+                    background_normal: 'Images/reminder.png'
+                    on_press: root.reminder_button_pressed()
+            Label:
+                size_hint: (0.4, 0.1)
+
+        RoundedButtonHome:
+            text: 'Go Back to Home'
+            size_hint: (.2,.1)
+            font_size: 20
+            color: (0,0,0,1)
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            background_normal: ''
+            pos_hint: {'center_x': 0.5}
+            on_press:
+                app.root.current='Home'
+                root.manager.transition.direction='right'
+        Label:
+            size_hint: 0.1, 0.07
+
+<LayoutScreen>:
+    name: 'LayoutScreen'
+
+    BoxLayout:
+        padding: 30
+        canvas.before:
+            Color:
+                rgb: (153/255, 225/255, 217/255)
+            Rectangle:
+
+                size: self.size
+
+        orientation: 'vertical'
+
+        Label:
+            text: 'Select a suitable layout for your timetable'
+            font_size: self.width/18
+            color: (0,0,0,1)
+            size_hint: (.5,.1)
+            pos_hint: {'center_x': 0.5}
+            font_name: "Fonts/Somatic-Rounded.ttf"
+
+        GridLayout:
+            cols:2
+            spacing: 30
+            padding: 30
+
+            MDCard:
+                md_bg_color: (207/255, 159/255, 255/255)
+                orientation: 'vertical'
+                elevation: 4
+                Image:
+                    source: 'Images/t1.jpg'
+                    allow_stretch: True
+                    keep_ratio: False
+                Label:
+                    text: 'This Layout Displays the Days from left to\n right and Time Periods top to bottom '
+                    halign: 'center'
+                    valign: 'middle'
+                    size_hint: (.5,.5)
+                    pos_hint: {'center_x': .5}
+                    font_name: "Fonts/Somatic-Rounded.ttf"
+                    font_size: self.width/10
+                    color: (0,0,0,1)
+            #MDIconButton:
+                #size_hint: (1,1)
+                #md_bg_color: 1,0,0,1
+                #elevation: 2
+
+            MDCard:
+                md_bg_color: (207/255, 159/255, 255/255)
+                orientation: 'vertical'
+                elevation: 4
+                Image:
+                    source: 'Images/t2.jpg'
+                    allow_stretch: True
+                    keep_ratio: False
+                Label:
+                    text: 'This Layout Displays the Days from top to \nbottom and Time Periods left to right '
+                    halign: 'center'
+                    valign: 'middle'
+                    size_hint: (.5,.5)
+                    pos_hint: {'center_x': .5}
+                    font_size: self.width/10
+                    color: (0,0,0,1)
+                    font_name: "Fonts/Somatic-Rounded.ttf"
+
+            Button:
+                text: 'Click to Select the Above Layout'
+                size_hint: .1 , .2
+                font_name: "Fonts/Somatic-Rounded.ttf"
+                background_normal: ''
+                background_color: 8/255, 143/255, 143/255
+                font_size: self.width/20
+                on_press:
+                    app.root.current='QuestionsScreen'
+                    root.manager.transition.direction='left'
+
+
+            Button:
+                text: 'Click to Select the Above Layout'
+                size_hint: .2 , .2
+                font_name: "Fonts/Somatic-Rounded.ttf"
+                background_normal: ''
+                background_color: 8/255, 143/255, 143/255
+                font_size: self.width/20
+                on_press:
+                    app.root.current='second_timetable_layout'
+                    root.manager.transition.direction='left'
+
+        RoundedButtonLayout:
+            color: (0,0,0,1)
+            text: 'Go Back'
+            size_hint_y: .1
+            size_hint_x: .3
+            pos_hint: {'center_x':.5}
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            background_normal: ''
+            font_size: self.width/20
+            on_press:
+                app.root.current = 'SecondScreen'
+                root.manager.transition.direction = 'right'
+
+
+
+
+<QuestionsScreen>:
+    name: 'QuestionsScreen'
+    background_color: 'normal'
+    canvas.before:
+        Color:
+            rgb: (86/255, 227/255, 159/255)
+        Rectangle:
+            size: self.size
+
+
+
+<second_question_screen>:
+    name: 'second_question_screen'
+    canvas.before:
+        Color:
+            rgb: (42/255, 157/255, 143/255)
+        Rectangle:
+            size: self.size
+
+
+
+<display_screen>:
+    name: 'display_screen'
+    canvas.before:
+        Color:
+            rgb: (152/255, 193/255, 217/255)
+            #42/255, 157/255, 143/255
+        Rectangle:
+            size: self.size
+
+
+<delete_screen>:
+    name: 'delete_screen'
+    canvas.before:
+        Color:
+            rgb: (233/255, 196/255, 106/255)
+        Rectangle:
+            size: self.size
+
+
+<update_screen>:
+    name: 'update_screen'
+    background_normal:''
+    canvas.before:
+        Color:
+            rgb: (38/255, 70/255, 83/255)
+        Rectangle:
+
+            size: self.size
+
+
+<csv_screen>:
+    name: 'csv_screen'
+    canvas.before:
+        Color:
+            rgb: (175/255, 203/255, 255/255)
+        Rectangle:
+            size: self.size
+
+    BoxLayout:
+        padding: 30
+        spacing: 20
+        orientation: 'vertical'
+        Label:
+            text: 'This function allows you to export your timetable data in a format\n that is compatible with spreadsheet software such as Microsoft\n Excel or Google Sheets. By clicking the export button and saving\n the generated CSV file, users can open the file in their preferred\n spreadsheet software and manipulate the data as needed. Exporting\n the timetable in excel will also allow you to print the timetable'
+            color: (0,0,0,1)
+            #background_color: (1,0,0,1)
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            font_size: self.width/35
+            #text_size: 700, None
+            halign: 'center'
+            valign: 'middle'
+            pos_hint: {'top': 0.9}
+        RoundedButtonCSV:
+            text: 'Export Timetable'
+            size_hint:(0.2,0.1)
+            pos_hint:{'center_x': 0.5, 'center_y': 0.9}
+            font_size: 20
+            background_normal: ''
+            color: (0,0,0,1)
+            font_name: "Fonts/Somatic-Rounded.ttf"
+            on_press: root.go_next()
+
+
+
+
+<second_csv_screen>:
+    name: 'second_csv_screen'
+    canvas.before:
+        Color:
+            rgb: (162/255, 227/255, 196/255)
+        Rectangle:
+            size: self.size
+
+<reminder_screen>:
+    name: 'reminder_screen'
+    canvas.before:
+        Color:
+            rgb: (203/255, 232/255, 150/255)
+        Rectangle:
+            size: self.size
+
+
+<second_timetable_layout>:
+    name: 'second_timetable_layout'
+    background_color: 'normal'
+    canvas.before:
+        Color:
+            rgb: (100/255, 217/255, 185/255)
+        Rectangle:
+            size: self.size
+
+
+
+
+
+
+<RoundedButton@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (251/255, 176/255, 157/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
+
+<RoundedButtonHome@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (136/255, 134/255, 213/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
+
+<RoundedButtonLayout@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (255/255, 240/255, 140/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
+
+<RoundedButtonTime@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (255/255, 240/255, 140/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
+
+<RoundedButtonCSV@Button>:
+    background_color: (0, 0, 0, 0)
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgb: (234/255, 154/255, 178/255)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [18]
